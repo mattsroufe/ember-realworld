@@ -1,10 +1,11 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import RSVP from 'rsvp';
+import { capitalize } from '@ember/string';
+import { getProperties, get } from '@ember/object';
 import BaseAuthenticator from 'ember-simple-auth/authenticators/base';
 
 import fetch from 'ember-network/fetch';
 import config from '../config/environment';
-
-const { RSVP, String: { capitalize }, get, getProperties, inject } = Ember;
 
 const headers = {
   Accept: 'application/json',
@@ -26,7 +27,7 @@ function normalizeErrors(errors) {
 }
 
 export default BaseAuthenticator.extend({
-  store: inject.service(),
+  store: service(),
 
   /**
    * Authenticate a user

@@ -1,14 +1,14 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import { oneWay } from '@ember/object/computed';
+import Controller from '@ember/controller';
 import { task } from 'ember-concurrency';
 
-const { Controller, computed, inject } = Ember;
-
 export default Controller.extend({
-  profiles: inject.service(),
-  session: inject.service(),
+  profiles: service(),
+  session: service(),
 
-  currentUser: computed.oneWay('session.session.content.authenticated'),
-  isAuthenticated: computed.oneWay('session.isAuthenticated'),
+  currentUser: oneWay('session.session.content.authenticated'),
+  isAuthenticated: oneWay('session.isAuthenticated'),
 
   waitingForFollowing: false,
 

@@ -1,8 +1,7 @@
-import Ember from 'ember';
-const { inject } = Ember;
+import Service, { inject as service } from '@ember/service';
 
-export default Ember.Service.extend({
-  store: inject.service(),
+export default Service.extend({
+  store: service(),
 
   followUser(userName) {
     const adapter = this.get('store').adapterFor('user');

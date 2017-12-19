@@ -1,10 +1,11 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Controller from '@ember/controller';
+import { capitalize } from '@ember/string';
+import { set, getProperties, get } from '@ember/object';
 
-const { String: { capitalize }, get, getProperties, inject, set } = Ember;
-
-export default Ember.Controller.extend({
-  session: inject.service(),
-  store: inject.service(),
+export default Controller.extend({
+  session: service(),
+  store: service(),
 
   init() {
     this._super();
